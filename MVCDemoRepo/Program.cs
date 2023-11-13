@@ -23,5 +23,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-
+    //controllernamnController/methodNamn (index tas om inget sägs) / parameter om nån anges
 app.Run();
