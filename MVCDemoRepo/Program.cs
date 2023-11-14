@@ -1,4 +1,9 @@
+ï»¿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using MVCDemoRepo.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<MVCDemoRepoContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MVCDemoRepoContext") ?? throw new InvalidOperationException("Connection string 'MVCDemoRepoContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -23,5 +28,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
-    //controllernamnController/methodNamn (index tas om inget sägs) / parameter om nån anges
+    //controllernamnController/methodNamn (index tas om inget sï¿½gs) / parameter om nï¿½n anges
 app.Run();

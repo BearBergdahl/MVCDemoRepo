@@ -12,9 +12,11 @@ namespace MVCDemoRepo.Controllers
         }
 
         // GET /Furniture/Welcome
-        public string Welcome(string department, int number = 3) 
-        { 
-            return HtmlEncoder.Default.Encode($"Welcome to Mykea {department}-department you are visitor {number}");
+        public IActionResult Welcome(string department = "Beds", int number = 3) 
+        {
+            ViewData["Department"] = "You selected department: " + department;
+            ViewData["RepeatNumber"] = number;
+            return View();
         }
     }
 }
